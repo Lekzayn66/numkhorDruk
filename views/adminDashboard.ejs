@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Car Management - NumkhorDruk</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #f5f5f5;
+    }
+
+    nav {
+      background: #222;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+    }
+
+    nav a {
+      color: #ccc;
+      margin-left: 1rem;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .btn {
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-add {
+      background: #4b6cb7;
+      color: white;
+    }
+
+    .btn-add:hover {
+      background: #3b59a0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th, td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    .car-img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .action-btns a,
+    .action-btns button {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.85rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 0.3rem;
+    }
+
+    .edit {
+      background: #4b6cb7;
+      color: white;
+    }
+
+    .delete {
+      background: #dc3545;
+      color: white;
+    }
+
+    .error {
+      background: #ffeaea;
+      color: #c00;
+      padding: 0.7rem;
+      border-radius: 4px;
+      margin: 1rem 0;
+    }
+
+    @media (max-width: 600px) {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      table {
+        font-size: 0.85rem;
+      }
+
+      .action-btns {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div>NumkhorDruk Admin</div>
+    <div>
+      <a href="/admin/dashboard">Dashboard</a>
+      <a href="/admin/logout">Logout</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="header">
+      <h1>Car Management</h1>
+      <a href="/admin/cars/add" class="btn btn-add">Add New Car</a>
+    </div>
+
+    <% if (locals.error) { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Title</th>
+          <th>Brand/Model</th>
+          <th>Year</th>
+          <th>Price</th>
+          <th>Location</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (locals.cars && locals.cars.length > 0) { %>
+          <% locals.cars.forEach(car => { %>
+            <tr>
+              <td><img src="<%= car.image %>" alt="Car" class="car-img"></td>
+              <td><strong><%= car.title %></strong><br><small><%= car.seller %></small></td>
+              <td><%= car.brand %> <%= car.model %></td>
+              <td><%= car.year %></td>
+              <td>Nu. <%= car.price.toLocaleString() %></td>
+              <td><%= car.location %></td>
+              <td class="action-btns">
+                <a href="/admin/cars/edit/<%= car.id %>" class="edit">Edit</a>
+                <form action="/admin/cars/delete/<%= car.id %>" method="POST" onsubmit="return confirm('Delete this car?');" style="display:inline;">
+                  <button type="submit" class="delete">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }); %>
+        <% } else { %>
+          <tr><td colspan="7">No cars listed yet.</td></tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

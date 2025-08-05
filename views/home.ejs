@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Numkhor Druk</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+    }
+
+    .navbar {
+      background: #1a237e;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .navbar a {
+      color: white;
+      margin-left: 1rem;
+      text-decoration: none;
+    }
+
+    .hero {
+      background: #1a237e;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .section {
+      padding: 2rem;
+    }
+
+    .car {
+      background: white;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 5px;
+    }
+
+    .car img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .car h3 {
+      margin: 0.5rem 0 0.2rem;
+    }
+
+    .car p {
+      margin: 0.2rem 0;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    footer {
+      background: #1a237e;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div><strong>NumkhorDruk</strong></div>
+    <div>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="/logout">Logout</a>
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1>Welcome to Numkhor Druk</h1>
+    <p>Find your dream car today</p>
+  </div>
+
+  <div class="section">
+    <h2>Featured Cars</h2>
+
+    <% if (cars && cars.length > 0) { %>
+      <% cars.forEach(car => { %>
+        <div class="car">
+          <img src="<%= car.image %>" alt="<%= car.title %>" />
+          <h3><%= car.title %></h3>
+          <p><%= car.brand %> - <%= car.year %></p>
+          <p>Price: Nu. <%= car.price %></p>
+          <p>Location: <%= car.location %></p>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <p>No cars available at the moment.</p>
+    <% } %>
+  </div>
+
+  <footer>
+    &copy; 2025 NumkhorDruk. All rights reserved.
+  </footer>
+
+</body>
+</html>

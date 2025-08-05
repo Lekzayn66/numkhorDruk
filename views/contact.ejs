@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - NumkhorDruk</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background: #8c888e; }
+    .navbar { background: #0b0b0c; padding: 1rem 5%; display: flex; justify-content: space-between; color: #fff; }
+    .navbar a { color: white; text-decoration: none; margin-left: 1rem; }
+    .container { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
+    .contact-box, .info-box { background: #fff; padding: 1.5rem; border-radius: 6px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+    .contact-box h2, .info-box h2 { color: #1a237e; margin-bottom: 1rem; }
+    input, textarea { width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px; }
+    button { width: 100%; padding: 0.8rem; background: #4a148c; color: white; border: none; border-radius: 4px; }
+    .info-item { margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; }
+    .info-icon { background: #4a148c; color: #fff; padding: 0.5rem; border-radius: 50%; }
+    footer { text-align: center; padding: 1rem; background: #1a237e; color: white; margin-top: 2rem; font-size: 0.9rem; }
+    @media (max-width: 768px) { .container { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="/index">NumkhorDruk</a>
+    <div>
+      <a href="/home">Home</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="/landing">Logout</a>
+    </div>
+  </nav>
+
+    <div class="info-box">
+      <h2>Our Info</h2>
+      <div class="info-item">
+        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div>Trashigang, Bhutan</div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon"><i class="fas fa-phone"></i></div>
+        <div>+975 17719759</div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon"><i class="fas fa-envelope"></i></div>
+        <div>info@numkhordruk.bt</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>&copy; 2025 NumkhorDruk. All rights reserved.</footer>
+
+</body>
+</html>
